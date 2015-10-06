@@ -59,6 +59,6 @@ p>img{
 	border-radius: 15px;
 }
 
-div * *:not(div):hover{
+div * *:not(div):hover:not(a):not(img){
 	background-color: #ffff00;
 }

@@ -30,10 +30,9 @@ p>img{
 	float: right;
 }
 
-.profileContents{
-	overflow: hidden;
-}
+
 header{
+	overflow: hidden;
 	background-color: #8E8E8E;
 }
 #profile{
@@ -41,9 +40,7 @@ header{
 	color: #B7B7B7;
 
 }
-/*.linkAndContents{
-	overflow: hidden;
-}*/
+
 article{
 	overflow: hidden;
 }
@@ -58,6 +55,6 @@ aside{
 	border-radius: 15px;
 }
 
-*:hover:not(div):not(body){
+body * * *:hover:not(section):not(a):not(img){
 	background-color: #ffff00;
 }
