@@ -1,0 +1,297 @@
+/* 우승연 2013043296*/
+/*ex1*/
+body{
+	font-family: Brown, verdana, sans-serif;
+	margin: 0px;
+	padding: 0px;
+	
+}
+body>div{
+	max-width: 1024px;
+	margin: 0px auto;
+}
+header{
+	background-color: black;
+	color: white;
+
+}
+header div{
+	max-width: 1024px;
+	margin: 0px auto;
+	overflow: hidden;
+}
+header div div{
+
+	font-size: 15px;
+	float: left;
+	padding-top: 11px;
+	padding-bottom: 11px;
+	padding-right: 30px;
+}
+header div div:last-child{
+	color: #ff6567;
+	float: right;
+}
+
+header div div:hover{
+	color: #1cace2;
+	cursor: pointer;
+}
+
+/*ex2*/
+#brand{
+	padding-top: 32px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 10px;
+}
+#brand a img{
+	width: 300px;
+	height: 62px;
+}
+#brand div{
+	text-align: right;
+}
+#brand div a{
+	margin-top: 45px;
+	text-decoration: none;
+}
+/*ex4*/
+#hot100{
+	text-align: center;
+}
+nav div{
+	float: left;
+	border: 1px solid #D9D9D8;
+}
+nav div:not(#search-wrap){
+	padding-top: 0.65em;
+	padding-bottom: 0.65em;
+	padding-left: 0.72em;
+	padding-right: 0.72em;
+}
+nav div:not(#search-wrap){
+	border-right: 1px solid white;
+}
+nav div:not(#search-wrap):hover{
+	border: 1px solid black;
+	box-shadow: 0 0 0 1px black inset;
+}
+
+/*ex5*/
+#week-bar{
+	background-color: black;
+	text-align: center;
+	color: white;/*nm*/
+	overflow: hidden;
+}
+#week-bar>div>div{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#week-bar>div>div>i{
+	width: 32px;
+	height: 32px;
+	line-height: 32px;
+	border-radius: 50%;
+	font-size: 1.25em;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+#week-bar>div>div>.fa-facebook{
+	background-color: #3b5998;
+	float: left;
+}
+#week-bar>div>div>.fa-twitter{
+	background-color: #55acee;
+	margin-left: 0.25em;
+	float: left;
+}
+/*ex6*/
+aside{
+	background-color: black;
+	color: white;
+	margin-top: 10px;
+	margin-left: 10px;
+	width: 300px;
+	float: right;
+}
+aside>div:first-child{
+	background-color: #484647;
+	padding: 0.75em;
+}
+aside>div:first-child i{
+	color: black;
+}
+aside>div>div{
+	height: 100px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #989898;
+}
+aside>div>div>div:first-child{
+	color: #989898;
+	padding: 1em;
+}
+aside>div>div>div:nth-child(2){
+	width: 45px;
+	font-size: 2em;
+	margin-top: 6px;
+	text-align: center;
+}
+aside img{
+	width: 2.5em;
+	height: 2.5em;
+	margin: 6px;
+}
+aside>div>div>div>p{
+	width: 192px;
+	margin: 0px;
+}
+
+aside>div>div>div>p>span:first-child{
+	display: block;
+	font-size: 1em;
+}
+aside>div>div>div>p>span:last-child{
+	display: block;
+	font-size: 12px;
+	color: #1cace2;
+}
+aside>div>div>div:last-child>i{
+	width: 32px;
+	height: 32px;
+	line-height: 32px;
+	border: 2px solid white;
+	border-radius: 50%;
+	font-size: 15px;
+	margin-top: 5px;
+	text-align: center;
+}
+/*aside>div>div>div:nth-child(3){
+	overflow: hidden;
+}*/
+aside>div>div>div:last-child{
+	float: right;
+}
+aside>div>div>div:nth-child(2),aside>div>div>div:nth-child(3){
+	float: left;
+}
+aside>div>div>div:nth-child(3){
+	overflow: hidden;
+}
+aside>div>div>div:nth-child(3)>img{
+	float: left;
+}
+/*ex7*/
+article{
+	margin-top: 10px;
+	overflow: hidden;
+}
+article>div{
+	height: 104px;
+	border-top: 1px solid #CDCDCD;
+	border-bottom: 1px solid white;
+}
+article>div>div:first-child{
+	width: 34px;
+	line-height: 104px;
+	text-align: center;
+	color: #8c8e90;
+	background-color: rgb(231, 231, 231);
+}
+.fa-arrow-down{
+	color: #f93c33;
+}
+.fa-arrow-up{
+	color: #05c648;
+}
+article>div>div:nth-child(2){
+	width: 100px;
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	
+
+}
+article>div>div:nth-child(2)>span:first-child{
+	font-size: 62px;
+	text-align: center;
+	display: block;
+}
+article>div>div:nth-child(2)>span:last-child{
+	font-size: 12.4px;
+	color: #989898;
+	line-height: 1;
+	display: block;
+}
+article>div img{
+	margin-top: 6px;
+	margin-bottom: 6px;
+	margin-right: 12px;
+	width: 91px;
+	height: 91px;
+}
+
+article>div>div>p>span:first-child{
+	font-size: 24px;
+	display: block;
+}
+article>div>div>p>span:last-child{
+	font-size: 16px;
+	color: #1cace2;
+	display: block;
+}
+article>div .fa-play{
+	width: 32px;
+	height: 32px;
+	line-height: 32px;
+	border: 2px solid black;
+	border-radius: 50%;
+	font-size: 15px;
+	margin-top: 15px;
+	margin-left: 10px;
+	text-align: center;
+}
+article>div{
+	overflow: hidden;
+}
+article>div>div{
+	float: left;
+}
+article>div>div:last-child{
+	float: right;
+}
+article>div>div:nth-child(3){
+	overflow: hidden;
+}
+article>div>div:nth-child(3)>img{
+	float: left;
+}
+article>div>div:nth-child(3)>p{
+	float: left;
+}
+
+footer{
+	overflow: hidden;
+	background-color: black;
+}
+footer div{
+	float: right;
+}
+/**/
+article>div:hover{
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+.fa-play:hover{
+	color: #1cace2;
+	cursor: pointer;
+	border: 2px solid #1cace2;
+	border-radius: 50%;
+}
+article>div>div>p>span:last-child:hover,aside>div>div>div>p>span:last-child:hover{
+	text-decoration: underline;
+	cursor: pointer;
+}
