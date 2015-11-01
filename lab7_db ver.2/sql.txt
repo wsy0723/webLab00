@@ -1,0 +1,221 @@
+/ex 1
+
+CREATE TABLE student(
+student_id INTEGER PRIMARY KEY NOT NULL,
+name VARCHAR(10) NOT NULL,
+year SMALLINT DEFAULT "1" NOT NULL,
+dept_no INTEGER NOT NULL,
+major VARCHAR(20) 
+);
+
+CREATE TABLE department(
+dept_no INTEGER PRIMARY KEY AUTO_INCREMENT,
+dept_name VARCHAR(20) UNIQUE,
+office VARCHAR(20),
+office_tel VARCHAR(13) NOT NULL
+);
+
+ALTER TABLE student MODIFY major VARCHAR(40);
+ALTER TABLE student ADD COLUMN gender VARCHAR(10);//타입 뭐로하죠
+
+ALTER TABLE department MODIFY dept_name VARCHAR(40);
+ALTER TABLE department MODIFY office VARCHAR(30);
+
+/ex2
+INSERT INTO student (student_id, name, year,dept_no, major)
+VALUES
+(20070002, 'James Bond', 3, 4, 'Business Administration') ,
+(20060001, 'Queenie', 4, 4, 'Business Administration'),
+(20030001, 'Reonardo', 4, 2, 'Electronic Engineering') ,
+(20040003, 'Julia', 3, 2, 'Electronic Engineering'),
+(20060002, 'Roosevelt', 3, 1, 'Computer Science') ,
+(20100002, 'Fearne', 3, 4, 'Business Administration'),
+(20110001, 'Chloe', 2, 1, 'Computer Science') ,
+(20080003, 'Amy', 4, 3, 'Law'),
+(20040002, 'Selina', 4, 5, 'English Literature') ,
+(20070001, 'Ellen', 4, 4, 'Business Administration'),
+(20100001, 'Kathy', 3, 4, 'Business Administration') ,
+(20110002, 'Lucy', 2, 2, 'Electronic Engineering'),
+(20030002, 'Michelle', 5, 1, 'Computer Science') ,
+(20070003, 'April', 4, 3, 'Law'),
+(20070005, 'Alicia', 2, 5, 'English Literature') ,
+(20100003, 'Yullia', 3, 1, 'Computer Science'),
+(20070007, 'Ashlee', 2, 4, 'Business Administration');
+
+INSERT INTO department (dept_name, office, office_tel)
+VALUES
+ ('Computer Science', 'Engineering building', '02-3290-0123'),
+ ('Electronic Engineering', 'Engineering building','02-3290-2345'),
+ ('Law', 'Law building', '02-3290-7896'),
+ ( 'Business Administration', 'Administration building','02-3290-1112'),
+ ('English Literature', 'Literature building', '02-3290-4412');
+
+ /ex3
+UPDATE department
+SET dept_name='Electronic and Electrical Engineering'
+WHERE dept_name='Electronic Engineering';
+
+INSERT INTO department (dept_name, office, office_tel)
+VALUES
+('Education', 'Education Building','02-3290-2347');
+
+UPDATE student SET major='Education' WHERE name='Chloe';
+
+DELETE FROM student WHERE name='Michelle';
+
+DELETE FROM student WHERE name='Fearne';
+
+/ex4
+1.select * from student where major='Computer Science';
+2.SELECT student_id,year,major FROM student;
+3.SELECT * FROM student WHERE  year=3;
+4.SELECT * FROM student WHERE year=1 or year=2;
+5.SELECT * FROM student s JOIN department d ON s.dept_no=d.dept_no 
+WHERE dept_name='Business Administration';
+
+/ex5
+1. SELECT * FROM student WHERE student_id LIKE '%2007%';
+2. SELECT * FROM student ORDER BY student_id;
+3. SELECT major, AVG(year) FROM student GROUP BY major HAVING AVG(year)>3;
+4. SELECT * FROM student WHERE major='Business Administration' AND student_id LIKE '%2007%' LIMIT 2;
+
+/ex6
+1. SELECT name, language
+FROM countries c
+JOIN languages l ON c.code=l.country_code
+WHERE independence_year=1948;
+2. 
+
+SELECT name
+FROM countries c
+JOIN
+(SELECT a.country_code
+FROM (SELECT country_code FROM languages WHERE language='English')a
+JOIN (SELECT country_code FROM languages WHERE language='French')b on a.country_code=b.country_code) joined
+WHERE c.code=joined.country_code;
+
+3. 
+SELECT language,COUNT(language)
+FROM languages l JOIN countries c ON l.country_code=c.code
+WHERE life_expectancy>75
+GROUP BY language
+ORDER BY COUNT(language) DESC
+LIMIT 5;
+
+4.
+SELECT name
+FROM cities ct JOIN
+(SELECT capital
+FROM countries c
+JOIN
+(SELECT a.country_code
+FROM (SELECT country_code FROM languages WHERE language='English')a
+JOIN (SELECT country_code FROM languages WHERE language='Korean')b 
+ON a.country_code=b.country_code) joined
+WHERE c.code=joined.country_code) ctc ON ct.id=ctc.capital;
+
+5.
+SELECT name
+FROM (SELECT country_code
+FROM languages
+WHERE official='T' AND percentage>20 AND percentage<50
+)cc JOIN
+cities c ON c.country_code = cc.country_code;
+
+6.
+SELECT SUM(surface_area)
+FROM (SELECT surface_area
+		FROM (SELECT AVG(ct.population), country_code
+			FROM cities ct JOIN countries ctr ON ct.country_code=ctr.code
+			GROUP BY ct.country_code
+			ORDER BY AVG(ct.population) DESC
+			LIMIT 5) a JOIN countries c ON c.code=a.country_code)d
+
+
+/ex7
+1.
+SELECT role
+FROM  movies m JOIN roles r ON m.id=r.movie_id
+WHERE name='Pi';
+
+
+2.
+SELECT id,first_name,last_name,gender
+FROM (SELECT COUNT(actor_id),actor_id
+		FROM movies m JOIN roles r ON m.id=r.movie_id
+		GROUP BY actor_id
+		ORDER BY COUNT(actor_id) DESC
+		LIMIT 7)j JOIN actors a ON a.id=j.actor_id
+
+
+3.
+SELECT first_name, last_name
+FROM (SELECT AVG(rank),director_id
+		FROM movies m JOIN movies_directors md ON md.movie_id=m.id
+		GROUP BY director_id
+		ORDER BY AVG(rank)
+		LIMIT 3)sq JOIN directors d ON sq.director_id=d.id
+
+4.
+SELECT first_name,last_name
+FROM (SELECT COUNT(id),director_id
+		FROM movies_directors md JOIN movies m ON md.movie_id=m.id
+							JOIN movies_genres mg ON m.id-mg.movie_id
+		WHERE genre='Thriller'
+		GROUP BY director_id
+		ORDER BY COUNT(id) DESC
+		LIMIT 1)a JOIN directors d ON a.director_id=d.id
+
+
+/extra
+1. 
+SELECT name
+FROM movies
+WHERE year='1995'
+
+2.
+SELECT COUNT(actor_id)
+FROM movies m JOIN roles r ON m.id=r.movie_id
+WHERE name='Lost in Translation'
+
+3.
+SELECT first_name,last_name,name
+FROM movies m JOIN roles r ON m.id=r.movie_id
+				JOIN actors a ON r.actor_id=a.id
+WHERE name='Lost in Translation'
+
+4.
+SELECT first_name,last_name
+FROM movies m JOIN movies_directors md ON m.id=md.movie_id
+			JOIN directors d ON md.director_id=d.id
+WHERE name='Fight Club'
+
+5.
+SELECT COUNT(movie_id),first_name,last_name
+FROM directors d JOIN movies_directors md ON md.director_id=d.id
+WHERE first_name='Clint' AND last_name='Eastwood'
+
+6.
+SELECT name
+FROM directors d JOIN movies_directors md ON md.director_id=d.id
+				JOIN movies m ON m.id=md.movie_id
+WHERE first_name='Clint' AND last_name='Eastwood'
+
+7.
+SELECT DISTINCT first_name,last_name
+FROM movies_genres mg JOIN movies m ON m.id=mg.movie_id
+					JOIN movies_directors md ON md.movie_id=m.id
+					JOIN directors d ON d.id=md.director_id
+WHERE genre='Horror'
+
+8.
+SELECT a.first_name,a.last_name
+FROM actors a JOIN roles r ON a.id=r.actor_id
+				JOIN movies m ON r.movie_id=m.id
+				JOIN movies_directors md ON md.movie_id=m.id
+				JOIN directors d ON d.id=md.director_id
+WHERE d.first_name='Christopher' AND d.last_name='Nolan'
+
+
+
+
